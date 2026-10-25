@@ -1,35 +1,40 @@
-# Design direction
+# Stromule official website
 
-## Reference study
+## Brief and scope
 
-Reviewed on 25 October 2026:
+Implemented in `stromule_website`, the existing GitHub Pages checkout. The supplied official-website brief drives the structure, product positioning, exact hero headline, parent-company attribution, and distinction between Stromule and Pangeabuy. Prior explicit requests to use only Poppins and Aref Ruqaa Ink remain in force; the new brief's preferred Manrope is not introduced.
 
-- [Linear](https://linear.app/homepage): organizes the explanation around stages of product development and pairs descriptions with concrete examples. Applied here as a progressive request → context → handoff → clarity story.
-- [Plane](https://plane.so/): names the kinds of work the product supports and places examples close to the explanation. Applied here through everyday business language and an interactive relationship map.
-- [Attio](https://attio.com/): uses specific scenarios and a progression through related activities to explain the platform. Applied here as a single customer-request example rather than a generic feature grid.
+## Identity and composition
 
-These are editorial and interaction references. Stromule does not claim those products' capabilities, integrations, customer proof, or availability. Their layouts, assets, and copy are not reused.
+The existing supplied Stromule mark is preserved. Its green, teal, and blue identity supplies the accent palette; deep business ink, white, pale green, and pale teal provide readable surfaces. The separately supplied P-shaped teal mark is used for Pangeabuy without recolouring. Brand-derived favicon and touch-icon assets are retained. Social previews use a 1200×630 PNG.
 
-## Identity
+The hero pairs the exact requested message with an illustrative working area. A restrained flowing ribbon sits behind a real grid of records so text does not depend on overlapping cards. Original, local SVG illustrations distinguish retail, wholesale, workshops, services, vendors, and growing businesses without pretending to depict real customers. The page progresses through the problem, better habits, product direction, intended audiences, everyday journeys, record lifecycle, discovery, ecosystem, adoption, trust, FAQ, and a closing invitation.
 
-The supplied `app/logos/logo.png` is the source of the website logo and favicon family. It is trimmed only around transparent padding and resized with Lanczos sampling. Its colors and shape are preserved. No synthetic replacement logo is used.
+Poppins is used for all reading and interface text. Aref Ruqaa Ink is used selectively for editorial phrases and the tagline. No other named font family is loaded or declared.
 
-Poppins is the reading and interface font. Aref Ruqaa Ink is used for selected headline phrases and margin annotations. These are the only requested font families; generic platform fallbacks apply if the external fonts cannot load.
+## Interactive storytelling
 
-Warm paper, deep green ink, and pale botanical green backgrounds reflect the supplied mark. Body text is darker than the original design to maintain readable contrast. Information and interaction states use labels, borders, and shapes as well as color.
+- Hero: switch between everyday pieces and an organised view; select each sample record for an explanation.
+- Merchant journeys: each of the six business profiles selects its own three-step story. Selecting a merchant resets the example and moves focus to the reading panel. Tabs support Left/Right arrows, Home, and End; the next control loops through the story.
+- Timeline: an Intersection Observer reveals a once-only progress line, with a vertical sequence on mobile.
+- Ecosystem: sequential entrance treatment distinguishes the business product, authorised connection, and customer-facing product.
+- FAQ: native keyboard-accessible disclosures.
+- Navigation: visible focus states, mobile menu with Escape and outside-click handling, focus movement on opening, and an observed sticky-header state.
+- Access/contact: honest availability notices, with native modal dismissal and focus restoration. No fake form, persistence, registration, or success state.
 
-## Content-driven interactions
+Reduced-motion settings remove movement and continuous animation while keeping controls functional. Important content remains in semantic HTML and readable without animation JavaScript. Illustrative records and journeys are explicitly distinguished from available product features. There is no automatic-import, inventory-sync, payment, delivery, or universally live integration claim.
 
-- The hero compares scattered and connected relationships. Selecting a business area changes an explanatory caption and highlights its connection. Curves are calculated from actual element positions and follow moving nodes.
-- The everyday-work example offers a shop order, a service booking, and a team job. Each follows the work, details, person, and next step. Changing examples resets the story. Previous/next controls, a progress bar, and tabs support self-paced exploration. Tabs support arrow keys, Home, and End. There is no timed advancement.
-- Principle details expand using native accessible disclosures.
-- Navigation follows the section in view; mobile navigation supports Escape.
-- Scroll entrances are subtle and progressive. Reduced-motion preferences remove entrance movement, diagram transitions, and line animation. Content remains visible without animation.
+## Validation
 
-All illustrations are labeled as concepts. No form or sign-up storage is implied. Contact remains an availability notice. Dedicated Privacy Policy and Terms & Conditions pages share the logo theme and the same two-font system; their wording covers the current informational site.
+Checked in Chromium headless on 25 October 2026:
 
-## Small-business language and international audience
+- Desktop, tablet, and mobile widths: 320, 390, 768, 1024, and 1440 CSS pixels; no horizontal overflow.
+- Four hero records and both workspace views.
+- Six merchant journeys and all 18 steps, reset/restart behaviour, and keyboard tab navigation.
+- Access dialog, Escape dismissal, mobile menu, FAQ, and both legal pages.
+- Reduced-motion transition removal.
+- Both requested fonts loaded; no page JavaScript errors in the completed browser check.
+- Visual inspection of desktop hero, mobile workspace, desktop/mobile product illustrations, and mobile journey.
+- Static link, local-asset, document-ID, ARIA-reference, single-H1, JavaScript syntax, JSON-LD, sitemap, and font-family checks.
 
-The homepage uses everyday terms such as daily tasks, details, people, and next steps. It explains Business Operating System once in plain English. Examples avoid named software vendors, currencies, local date formats, region-specific regulations, and invented customer outcomes. Shops, service businesses, people working alone, and small teams can explore without entering data. Country coverage, languages, pricing, and availability remain explicitly unannounced. A practical FAQ answers those questions without suggesting the product is already available.
-
-Scenario state was checked in a Node DOM harness: all 12 steps, selection resets, previous/next and restart actions, keyboard navigation, progress updates, and single-tab selection. Static checks cover links, assets, heading structure, ARIA references, and the two-font restriction. These checks do not replace rendered browser testing.
+Lighthouse and real-device testing were not run. Registration, product access, a verified contact channel, and an official Pangeabuy destination still require real supplied endpoints. No deployment or repository push is part of this local implementation.
