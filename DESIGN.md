@@ -1,3 +1,7 @@
+# Historical design notes — 25 October 2026
+
+These notes describe the previous homepage. See [REDESIGN.md](REDESIGN.md) for the current design, claim evidence and validation limits. The earlier browser results below do not validate the redesigned homepage.
+
 # Stromule official website
 
 ## Brief and scope
