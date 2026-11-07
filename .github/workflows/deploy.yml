@@ -21,6 +21,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: node scripts/build-interactive.mjs
       - name: Build public artifact and sitemap
         run: python scripts/build.py
       - name: Check crawlability and SEO

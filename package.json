@@ -1,0 +1,28 @@
+{
+  "name": "stromule-website",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-interactive.mjs && python3 scripts/build.py",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test && npm run build && python3 scripts/check_seo.py",
+    "test": "node scripts/check_business.mjs",
+    "preview": "python3 -m http.server 8000 --directory _site"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "motion": "^12.23.0",
+    "gsap": "^3.13.0",
+    "@gsap/react": "^2.1.2",
+    "three": "^0.180.0",
+    "@react-three/fiber": "^9.4.0",
+    "@react-three/drei": "^10.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "esbuild": "^0.25.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.180.0"
+  }
+}

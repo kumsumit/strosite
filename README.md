@@ -4,7 +4,7 @@ Official introduction website for Stromule, a product of Kumpali Private Limited
 
 ## Local preview
 
-Run `python3 -m http.server 8000` in this directory, then open http://localhost:8000. No installation is required. For a production-equivalent preview, run `python3 scripts/build.py` then `python3 -m http.server 8000 --directory _site`.
+Run `npm ci` and `npm run check`, then `python3 -m http.server 8000 --directory _site` and open http://localhost:8000. Node 22+ and Python 3 are required. The build pre-renders the React hero so its product content remains available without JavaScript. See `ANIMATION_ARCHITECTURE.md` for module ownership and build details.
 
 ## Source structure
 
@@ -57,3 +57,17 @@ Checked seven viewports from 320px to 2560px, including landscape, with no horiz
 
 
 The hero now uses an interactive 3D shop: customer, shopkeeper, counter, bill, items, supplier and van. Click the models or use the four entity buttons; advance the sample sale with the primary action and reset with Start Again. Run `node scripts/check_scene.mjs` for the scene's geometry, transaction-state and lifecycle checks.
+
+## React animation upgrade — 7 November 2026
+
+The hero now presents an interactive business dashboard with inventory, billing, customer, purchase, payment, team and report previews. Record/reset a sample rice sale to see stock move from 42 to 40 bags. Motion controls UI transitions, shared section reveals and reading progress; lazy GSAP controls desktop scroll chapters. Lazy React Three Fiber and Drei provide a demand-rendered desktop depth layer. The old shop scene is no longer loaded. No approved Rive assets or customer stories were available, so no placeholder Rive runtime or fictional testimonials were added.
+
+Initial JavaScript is approximately 114 KB gzip, with the optional 3D chunk approximately 233 KB gzip and scroll-story chunk approximately 45 KB gzip (plus small shared chunks). These are transfer-size estimates from the build, not measured performance scores. This upgrade is local and has not been deployed.
+
+Browser checks for this upgrade covered 320, 390, 768 and 1440px widths without document overflow; sample sale updates, product tabs, Home/End keyboard navigation, mobile menu/Escape and scroll-story entry passed. No console warnings or errors appeared in these checks. Mobile rendered no WebGL canvas. TypeScript, production build, SEO and HTTP smoke checks passed. Reduced-motion fallbacks were inspected in source; OS-level reduced-motion emulation, real-device QA and production Lighthouse/axe scores were not measured.
+
+## Hands-on animated shop
+
+Use **Play a working day** in the hero to open the new interactive shop. Set 1–8 rice bags, choose paid or credit, then play or step through the sale. Rice travels from the shelf into the basket; an itemized bill prints; stock, the customer account and daily reporting update in sequence. Receive a supplier delivery to animate the van and stock receipt, toggle attendance, or prepare an unsent payment reminder. Reset returns the whole simulation to its initial state.
+
+This is original SVG artwork animated with Motion and backed by a tested transaction state model. The static dashboard below the hero was replaced. The implementation adds no animation dependencies. `npm test` verifies inventory, paid/credit, purchase receipt, invoice count, quantity locking and reset behavior. `npm run preview` serves the last production build on port 8000.
