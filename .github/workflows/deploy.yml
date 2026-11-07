@@ -21,12 +21,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+      - name: Build public artifact and sitemap
+        run: python scripts/build.py
       - name: Check crawlability and SEO
         run: python scripts/check_seo.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify IndexNow after successful deployment
+        continue-on-error: true
+        run: python scripts/indexnow.py --submit

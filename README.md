@@ -4,7 +4,7 @@ Official introduction website for Stromule, a product of Kumpali Private Limited
 
 ## Local preview
 
-Run `python3 -m http.server 8000` in this directory, then open http://localhost:8000. No installation or build step is required.
+Run `python3 -m http.server 8000` in this directory, then open http://localhost:8000. No installation is required. For a production-equivalent preview, run `python3 scripts/build.py` then `python3 -m http.server 8000 --directory _site`.
 
 ## Source structure
 
@@ -29,4 +29,8 @@ Registration is not open, pricing and launch timing are unannounced, and this we
 
 ## Publishing
 
-This directory is the repository root for `kumsumit/strosite`. The included GitHub Actions workflow publishes `main` to GitHub Pages. The existing `CNAME` retains stromule.com. This redesign is a local implementation and has not been pushed or deployed. Complete browser and real-device QA before publication; see `REDESIGN.md`.
+This directory is the repository root for `kumsumit/strosite`. The included GitHub Actions workflow builds and validates `_site`, publishes that public artifact from `main` to GitHub Pages, then notifies IndexNow. The existing `CNAME` retains stromule.com. This redesign is a local implementation and has not been pushed or deployed. Complete browser and real-device QA before publication; see `REDESIGN.md`.
+
+## SEO maintenance
+
+Run `python3 scripts/build.py`, `python3 scripts/check_seo.py`, and `python3 scripts/indexnow.py` (dry run). New indexable HTML pages must have self-referencing canonical URLs and unique metadata; the build discovers them automatically. See `SEO_AUDIT.md`, `CRAWLER_POLICY.md`, and `SEO.md` for implementation, verification results and external account steps. Never preview or deploy the parent application workspace.

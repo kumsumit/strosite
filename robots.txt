@@ -1,3 +1,7 @@
+# Public website: search, AI discovery/training, social, research and archives.
+# The default group also permits unknown crawlers; no assets are blocked.
+# This is a crawl preference, not authentication or a security allowlist.
 User-agent: *
 Allow: /
+
 Sitemap: https://stromule.com/sitemap.xml

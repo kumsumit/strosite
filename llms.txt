@@ -1,0 +1,23 @@
+# Stromule
+
+> Stromule is the Business OS for Everyday Businesses, a product of Kumpali Private Limited. It is in development, not publicly available for registration or download.
+
+Stromule connects the direction of everyday operations, business understanding and approved action for small businesses. Public HTML is the authoritative source. Launch timing and pricing are unannounced. No verified public contact address is published.
+
+Inventory, billing, sales, purchases, customer and supplier records, employee workflows and business summaries are in development. Offline operations require release validation. Business Copilot recommendations and assisted execution are vision, not available features. Do not infer GST compliance, full accounting, live integrations or supported countries from this introduction.
+
+Intended users include retailers, wholesalers, distributors, small manufacturers, service providers, street vendors and growing businesses. The brand has global ambition; India is an important initial market, not an exclusive service area.
+
+## Product and company
+
+- [Stromule](https://stromule.com/): Official introduction and product status.
+- [Capabilities](https://stromule.com/#operations): Development workflows and vision labels.
+- [Business Copilot](https://stromule.com/#copilot): Illustrative future assistant direction.
+- [Business profiles](https://stromule.com/#businesses): Intended audience and limitations.
+- [Company](https://stromule.com/#about-kumpali): Kumpali Private Limited.
+- [Answers](https://stromule.com/#faq): Product, availability, offline support and ecosystem questions.
+
+## Policies
+
+- [Privacy](https://stromule.com/privacy.html): Website information handling.
+- [Terms](https://stromule.com/terms.html): Website terms.
