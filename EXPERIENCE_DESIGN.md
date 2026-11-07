@@ -12,7 +12,7 @@ The research is a selective study of notable creative websites, not a claim to h
 
 ## Design decisions
 
-The central object is a receipt, not a decorative abstract shape. It connects to stock, customer records, people and the next decision. Original HTML/CSS and SVG geometry produce the scene without copying reference artwork or loading a 3D engine.
+The central object is a receipt, not a decorative abstract shape. It connects to stock, customer records, people and the next decision. The original HTML/CSS and SVG scene remains the fallback. A locally vendored Three.js enhancement now renders the receipt and its connected objects as real 3D geometry; no reference artwork is copied.
 
 The hero uses an asymmetric editorial composition and contrasting serif emphasis. The existing operational dashboard remains supporting context. A separate scroll story uses a sticky explanation on larger screens and four readable chapters; smaller screens present the story in normal document flow. No scroll interception, forced horizontal scrolling or custom cursor is used.
 
@@ -24,7 +24,7 @@ The hero uses an asymmetric editorial composition and contrasting serif emphasis
 - Copilot prompt buttons change a sample question, response heading and relevant evidence emphasis. These are authored examples, not generated recommendations.
 - Sections reveal once as they enter the viewport. Fine-pointer movement adds a small perspective response to the receipt scene; keyboard focus and pointer exit reset it.
 - The circuit animation pauses when its scene leaves the viewport. The page visibility handler pauses CSS animations, cancels scheduled frames and resets tilt while hidden, then schedules a refresh on return.
-- Scroll work is coalesced into a requested animation frame. There is no permanent JavaScript render loop.
+- Scroll work is coalesced into a requested animation frame. The scroll interface has no permanent render loop. The Three.js scene runs a separate frame loop only while visible, unpaused and permitted by motion preferences.
 - A visible pause/resume control disables motion. `prefers-reduced-motion` also removes animation, tilt and reveal transitions. Reveals are enabled only after observer setup; content is visible when JavaScript is unavailable.
 
 ## Verification
@@ -34,3 +34,16 @@ Build, SEO/local-link checks and JavaScript syntax validation passed. Browser ch
 Verified in the browser: flow button state and description changes; chapter 03 selection and metric; circuit paused off-screen; pause/resume via click and Space; offline/online switch via click and Space; Copilot dues prompt; mobile menu opening and closing after navigation. No browser errors were recorded. System reduced-motion and hidden-tab behavior are implemented but were not independently exercised by changing operating-system preferences or forcing lifecycle events. Browser emulation does not replace physical-device or cross-engine testing.
 
 Changes remain local; no deployment or external submissions occurred.
+
+
+## Interactive 3D shop
+
+The current hero is a low-poly neighbourhood shop with a customer and basket, shopkeeper, checkout counter, inventory shelves with rice bags, bottles and cartons, plus a supplier, delivery boxes and van. These are original procedural meshes; no external models are loaded. A floating sample bill appears when the visitor creates the illustrated sale. Transaction particles follow curved paths between entities instead of orbiting an abstract object.
+
+The customer, shopkeeper, counter, shelves, bill, supplier and van are selectable through real Three.js raycasting. The same steps have native HTML buttons for keyboard and touch access. Clicks use a movement threshold to avoid treating vertical scrolling as selection; solid scenery occludes objects behind it. The primary action advances through four authored states, and Start Again resets the scene. There is no timed autoplay or real transaction.
+
+Sample accounting is consistent: two rice bags at ₹590 each create a ₹1,180 bill; stock changes from 42 to 40. A sample supplier delivery of eight bags brings stock to 48. Stock labels, bill visibility, customer position, shelf items, delivery boxes and van position reflect the selected state. All records remain explicitly illustrative.
+
+`scene.js` imports local Three.js 0.180.0 as the scene approaches the viewport. Desktop initialization uses 120 transaction particles and caps pixel ratio at 1.5. Small screens/data-saving connections use 60 particles, a 1.25 pixel-ratio cap and a render rate capped near 30 fps. Pointer movement adds restrained perspective. The existing pause/reduced-motion controls stop the frame loop; selecting a state while paused updates to its static end state. The DOM illustration remains available without WebGL or after context loss.
+
+`node scripts/check_scene.mjs` runs the actual Three.js geometry with a mocked renderer. Tests cover finite particle simulation, entity creation, bill appearance, stock deduction, supplier delivery, reset, raycasting against actual meshes, scrolling gesture rejection, off-screen/hidden-page suspension, pause/resume, context loss, no-WebGL fallback and reduced motion. Browser QA separately verified GPU rendering, direct supplier selection, step progression by click and Space, stock labels, reset and mobile layout. Responsive checks passed at 320×568, 390×844, 768×1024, 844×390, 1024×768, 1440×1000 and 2560×1080 with no horizontal overflow or browser warnings/errors. Physical-device battery usage and cross-engine GPU performance remain unmeasured.

@@ -21,7 +21,7 @@ Run `python3 -m http.server 8000` in this directory, then open http://localhost:
 - `COMPETITIVE_POSITIONING.md`: primary-source competitive research, positioning decisions and input-capability verification.
 - `REDESIGN.md`: editorial audit, removed/rewritten/new sections, source-backed claim classifications, product-team questions and verification limits.
 
-The homepage loads Inter and Plus Jakarta Sans through Google Fonts. Legal pages retain their existing typography. No runtime dependencies were added.
+The homepage loads Inter and Plus Jakarta Sans through Google Fonts. Legal pages retain their existing typography. Three.js 0.180.0 is vendored locally under `assets/vendor/three/` with its MIT license. It loads on demand near the scene; no CDN is required.
 
 ## Product status
 
@@ -54,3 +54,6 @@ Checked seven viewports from 320px to 2560px, including landscape, with no horiz
 ## Interactive experience
 
 `experience.css` and `experience.js` add the receipt scene, transaction story, visibility-aware motion, motion pause control, illustrative offline switch and Copilot prompt choices. See `EXPERIENCE_DESIGN.md` for the reference study, design rationale and verification limits. All demos use sample records and perform no business operations.
+
+
+The hero now uses an interactive 3D shop: customer, shopkeeper, counter, bill, items, supplier and van. Click the models or use the four entity buttons; advance the sample sale with the primary action and reset with Start Again. Run `node scripts/check_scene.mjs` for the scene's geometry, transaction-state and lifecycle checks.

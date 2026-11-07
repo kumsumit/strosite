@@ -9,18 +9,24 @@
 
   // Real controls first; no registration or transactions are performed by these illustrations.
   const descriptions = [
-    'A sale becomes a stock movement. One less place to update by hand.',
-    'A transaction joins a customer record. The relationship keeps its context.',
-    'Connected work meets clear responsibility. Your team sees what belongs to them.',
-    'Connected records give the next decision context. Copilot remains product vision.'
+    'A customer arrives for two bags of rice. Follow the people, items and records behind one sale.',
+    'The shopkeeper brings the basket to the counter. Two bags of rice become a bill for ₹1,180.',
+    'The bill connects to the customer record. Two bags leave the shelf: 42 becomes 40.',
+    'The supplier delivers eight bags. Receiving stock brings the shelf from 40 to 48, ready for the next customer.'
   ];
-  document.querySelectorAll('[data-flow-step]').forEach(button => {
-    button.addEventListener('click', () => {
-      machine.dataset.flow = button.dataset.flowStep;
-      document.querySelectorAll('[data-flow-step]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      document.querySelector('.flow-description').textContent = descriptions[Number(button.dataset.flowStep)];
-    });
-  });
+  function showShopStep(step) {
+    const index = Number(step);
+    machine.dataset.flow = String(index);
+    document.querySelectorAll('[data-flow-step]').forEach(item => item.setAttribute('aria-pressed', String(Number(item.dataset.flowStep) === index)));
+    document.querySelector('.flow-description').textContent = descriptions[index];
+    const stock = document.querySelector('.node-team strong');
+    if (stock) stock.textContent = `${[42, 42, 40, 48][index]} bags on shelf`;
+    const next = document.querySelector('.scene-pulse');
+    if (next) next.firstChild.textContent = ['Serve customer ', 'Create the bill ', 'Receive delivery ', 'Meet the next customer '][index];
+  }
+  document.querySelectorAll('[data-flow-step]').forEach(button => button.addEventListener('click', () => showShopStep(button.dataset.flowStep)));
+  document.querySelector('.scene-pulse')?.addEventListener('click', () => showShopStep((Number(machine.dataset.flow) + 1) % 4));
+  document.querySelector('.scene-fold')?.addEventListener('click', () => showShopStep(0));
   const connection = document.querySelector('.connection-switch');
   connection?.addEventListener('click', () => {
     const online = connection.getAttribute('aria-checked') !== 'true';
