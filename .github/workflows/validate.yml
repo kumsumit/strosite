@@ -1,0 +1,35 @@
+name: Validate website
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check common.js
+          node --check script.js
+      - name: Build public website
+        run: python scripts/build.py
+      - name: Check metadata, links and crawler access
+        run: python scripts/check_seo.py
+      - name: Check HTTP responses
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 --directory _site &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in 1 2 3 4 5; do
+            if curl --fail --silent http://127.0.0.1:8000/ > /dev/null; then break; fi
+            sleep 1
+          done
+          python scripts/check_http.py --base-url http://127.0.0.1:8000
