@@ -6,3 +6,49 @@
 @media(max-width:359px){.wrap{width:calc(100% - 24px)}.brand{font-size:19px}.brand img{width:26px;height:26px}.small{font-size:9px;padding:7px 8px}.nav{gap:6px}.metrics strong{font-size:17px}.metrics article>span{font-size:7px}.insight a{margin-left:0}.sync-diagram article{flex-wrap:wrap}.sync-diagram .pill{margin-left:37px}}
 @media(max-height:500px) and (min-width:601px){.nav{min-height:60px}.hero{padding-top:25px}.section{padding-block:45px}nav{max-height:calc(100dvh - 60px)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Stromule's operating canvas: transaction documents and connected records. */
+:root{--surface:#f8f9f4;--panel:#f0f3ec;--panel-strong:#e9eee6;--line:#d9e1d6}
+.hero{position:relative;isolation:isolate;background:var(--surface);overflow:hidden}
+.hero-inner{position:relative;z-index:1}
+.operation-art{position:absolute;inset:0 0 auto;height:660px;background:url('assets/operation-map.svg') center top/1600px 660px no-repeat;pointer-events:none;z-index:0}
+.announcement{background:#edf1e7;border:1px solid #d6dfce;box-shadow:none;border-radius:5px}
+.announcement-extra{border-color:#c2d0bd}
+h1 em{text-decoration:none;position:relative;background:linear-gradient(transparent calc(100% - 3px),#00ba7c55 0);padding-bottom:5px}
+.trust-row{padding-bottom:24px}
+.workflow-thread{display:flex;align-items:center;justify-content:center;gap:25px;width:fit-content;max-width:100%;margin:0 auto 70px;padding:14px 25px;border-block:1px solid #cfdbce;font:10px/1.5 ui-monospace,monospace;color:#49644f;letter-spacing:.02em}
+.workflow-thread span{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.workflow-thread i{font:9px/1 ui-monospace,monospace;color:#6f856b}
+.workflow-thread b{font-weight:400;color:#8aa28b}
+.dashboard{border-color:#cdd9cc;box-shadow:0 8px 0 -3px #e5ebdf,0 9px 0 -3px #c9d5c8,0 24px 45px -28px #28473045;border-radius:10px}
+.insight{background:#193f32;border:1px solid #38604b;box-shadow:0 6px 15px #1a3c3020;border-radius:7px}
+.counter,.ledger,.window-bar,.metrics article{border-radius:6px}
+.section{position:relative;border-top:1px solid #dde5d8;background-image:linear-gradient(to right,transparent calc(50% - 641px),#dbe3d5 calc(50% - 640px),transparent calc(50% - 639px),transparent calc(50% + 639px),#dbe3d5 calc(50% + 640px),transparent calc(50% + 641px))}
+.section>.wrap{position:relative}
+.section>.wrap::before,.section>.wrap::after{content:'+';position:absolute;top:-93px;color:#8ba384;font:16px/16px ui-monospace,monospace}
+.section>.wrap::before{left:-5px}.section>.wrap::after{right:-5px}
+.tinted{background-color:#eef2e9;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 47px,#d3dfc837 47px,#d3dfc837 48px)}
+.feature{border-color:#d4dfce;box-shadow:none;border-radius:8px}
+.copilot-feature{background:#194b38;position:relative;overflow:hidden}
+.copilot-feature::before{content:'';position:absolute;width:220px;height:220px;right:-55px;top:-110px;border:1px solid #8cb89d33;border-radius:50%;box-shadow:0 0 0 24px #8cb89d0b,0 0 0 49px #8cb89d08;pointer-events:none}
+.conversation{box-shadow:8px 8px 0 #e7eddf;border-color:#cfdac9;border-radius:8px}
+.offline{background-color:#182d26;background-image:repeating-linear-gradient(90deg,transparent 0,transparent 119px,#a7c6ad08 119px,#a7c6ad08 120px);border-color:#2f4737}
+.offline .sync-diagram{background:#1c352a;border-color:#526e514d;border-radius:8px}
+.sector{border-radius:7px;border-color:#d4dfce}
+.ecosystem{background-color:#eef2e9;background-image:radial-gradient(#94ad783d .7px,transparent .7px);background-size:14px 14px}
+.ecosystem>.wrap>div:first-child{background:#eef2e9;box-shadow:0 0 0 18px #eef2e9}
+.ecosystem-diagram{border-radius:8px;border-color:#cbd8c2;box-shadow:6px 6px 0 #dfe8d7}
+.migration{background:#e9efdf}
+.migration-inner::before,.migration-inner::after{display:none}
+.access-banner{background:#174632;border-radius:8px;position:relative;isolation:isolate;overflow:hidden;border:1px solid #2b5d41}
+.access-banner::before{content:'';position:absolute;inset:0;z-index:-1;opacity:.4;background:url('assets/operation-map.svg') center/1600px 660px no-repeat;filter:brightness(1.9)}
+.access-banner::after{content:'';position:absolute;inset:14px;border:1px solid #d1edc322;z-index:-1;pointer-events:none}
+@media(min-width:1601px){.operation-art{background-size:100% 660px}}
+@media(max-width:1250px){.operation-art{opacity:.5;background-size:1450px 660px}.hero h1{max-width:950px}}
+@media(max-width:1100px){.operation-art{display:none}.section{background-image:none}}
+@media(max-width:940px){.workflow-thread{gap:18px;margin-bottom:65px}.section>.wrap::before,.section>.wrap::after{top:-73px}}
+@media(max-width:600px){.hero{background-image:linear-gradient(90deg,transparent 15px,#d4dfcc66 15px,#d4dfcc66 16px,transparent 16px,transparent calc(100% - 16px),#d4dfcc66 calc(100% - 16px),#d4dfcc66 calc(100% - 15px),transparent calc(100% - 15px))}.hero h1{max-width:100%}.announcement{border-radius:4px}.trust-row{padding-bottom:20px}.workflow-thread{width:100%;gap:10px;padding:13px 0;margin-bottom:25px;font-size:9px}.workflow-thread i{font-size:8px}.workflow-thread .thread-desktop{display:none}.workflow-thread span{gap:5px}.dashboard{box-shadow:0 5px 0 -2px #e5ebdf,0 6px 0 -2px #c9d5c8}.section>.wrap::before,.section>.wrap::after{top:-55px}.conversation{box-shadow:4px 4px 0 #e7eddf}.ecosystem>.wrap>div:first-child{box-shadow:0 0 0 5px #eef2e9}.access-banner::before{opacity:.15}.access-banner::after{inset:8px}}
+/* Keep the full drawing within the viewport, including its margin annotations. */
+.operation-art{background-size:100% auto}
+@media(min-width:1601px){.operation-art{background-size:1600px 660px}}
+@media(min-width:1101px) and (max-width:1250px){.operation-art{background-size:100% auto}}

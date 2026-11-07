@@ -44,3 +44,13 @@ The public crawler policy permits all user agents and public assets, including u
 The homepage follows the supplied Stitch project: emerald accents, pale slate surfaces, centered typography, a detailed dashboard concept and connected capability cards. Browser checks covered 320, 390, 600, 768, 844, 1024, 1440, 1920 and 2560px widths, including portrait and landscape, without horizontal overflow. Mobile navigation, the availability dialog and native FAQ disclosure passed, with no browser errors or warnings. Build, SEO, JavaScript syntax and local HTTP checks passed. Pull requests now validate the build, crawler rules, metadata, links and HTTP responses in CI.
 
 These changes are local and have not been pushed or deployed. Before public product launch, supply a verified contact channel and confirm product availability. The current website remains an informational introduction to a product in development.
+
+## Product background refinement
+
+The homepage now uses an original SVG operating map (`assets/operation-map.svg`): receipt, stock parcel, ledger and team drawings connected by transaction paths. Warm neutral surfaces, fine document rules and a compact workflow strip replace the previous lavender glow. Decorative side drawings disappear below 1100px, while mobile keeps a simplified flow. The drawings are hidden from assistive technology and do not intercept input. Visual references: https://linear.app/homepage (product-led composition) and https://stripe.com (graphic identity with structural rules). No external artwork was copied.
+
+Checked seven viewports from 320px to 2560px, including landscape, with no horizontal overflow. Build and SEO/link checks pass. This refinement remains local.
+
+## Interactive experience
+
+`experience.css` and `experience.js` add the receipt scene, transaction story, visibility-aware motion, motion pause control, illustrative offline switch and Copilot prompt choices. See `EXPERIENCE_DESIGN.md` for the reference study, design rationale and verification limits. All demos use sample records and perform no business operations.

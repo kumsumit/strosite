@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 660" fill="none">
+<!-- A transaction leaves a receipt, moves stock and updates a shared record. -->
+<g stroke="#b7c8bd" stroke-width="1"><path d="M52 0v660M1548 0v660"/><path d="M0 70h180M1420 70h180"/><path d="M0 570h270m1060 0h270"/><path d="M46 70h12m-6-6v12m1490-6h12m-6-6v12M46 570h12m-6-6v12m1490-6h12m-6-6v12"/></g>
+<g stroke="#789989" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+<path d="M92 182v-49l8 5 8-5 8 5 8-5 8 5 8-5 8 5 8-5v104l-8-5-8 5-8-5-8 5-8-5-8 5-8-5-8 5v-38" fill="#fffef9"/>
+<path d="M106 155h35m-35 9h25m-25 18h35m-35 9h35m-35 13h12m12 0h11"/><path d="M104 217v8m4-8v8m5-8v8m3-8v8m7-8v8m4-8v8m3-8v8m6-8v8m4-8v8"/>
+<path d="M1456 157l39-21 39 21v48l-39 22-39-22z" fill="#edf2e8"/><path d="M1456 157l39 22 39-22m-39 22v48m-18-80 38 22v18l-9 5v-18l-38-21"/><path d="M1470 194l11 6m-11 0 11 6"/>
+<path d="M106 412h64v48h-64z" fill="#fffef9"/><path d="M106 424h64m-45-12v48m22-48v48m-41-24h64m-64 12h64"/>
+<circle cx="1472" cy="417" r="10" fill="#fffef9"/><circle cx="1501" cy="422" r="8" fill="#fffef9"/><path d="M1455 450v-9c0-18 34-18 34 0v9zm34-17c13-7 24 1 24 11v6h-18"/>
+</g>
+<g stroke="#9fb7a8" stroke-width="1.2" stroke-dasharray="3 6"><path d="M124 246v69q0 20 20 20h35q20 0 20 20v44q0 20-20 20h-9"/><path d="M1495 241v74q0 20-20 20h-46q-20 0-20 20v66q0 20 20 20h25"/></g>
+<g stroke="#257252" stroke-width="1.3"><path d="M164 331l5 4-5 4m1259-8-5 4 5 4"/><circle cx="124" cy="280" r="3" fill="#257252"/><circle cx="1495" cy="282" r="3" fill="#257252"/></g>
+<g fill="#607b6b" font-family="monospace" font-size="9" letter-spacing="1.6"><text x="91" y="111">01 / BILL</text><text x="1453" y="111">02 / STOCK</text><text x="91" y="485">03 / RECORD</text><text x="1454" y="485">04 / TEAM</text><text x="76" y="600">EVERY TRANSACTION</text><text x="1380" y="600">ONE CONNECTED SYSTEM</text></g>
+</svg>
