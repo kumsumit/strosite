@@ -11,7 +11,8 @@ Run `python3 -m http.server 8000` in this directory, then open http://localhost:
 - `index.html`: homepage content, semantic structure and SEO metadata.
 - `styles.css`: existing shared brand tokens, navigation, legal pages and responsive styles.
 - `positioning.css`: homepage operating-system narrative, product concepts and responsive layouts.
-- `crafted.css`: custom paper-and-ledger visual design, editorial typography and responsive refinements.
+- `stitch.css`: current Stitch-inspired homepage design with emerald accents, slate surfaces, adaptive dashboard, cards and responsive layouts.
+- `crafted.css` and `positioning.css`: retained earlier homepage treatments; no longer loaded by the homepage.
 - `script.js`: informational access/contact dialogs and active navigation state.
 - `common.js`: mobile navigation, sticky header and copyright year on all pages.
 - `content.js`: legacy merchant-journey data retained but no longer loaded.
@@ -20,7 +21,7 @@ Run `python3 -m http.server 8000` in this directory, then open http://localhost:
 - `COMPETITIVE_POSITIONING.md`: primary-source competitive research, positioning decisions and input-capability verification.
 - `REDESIGN.md`: editorial audit, removed/rewritten/new sections, source-backed claim classifications, product-team questions and verification limits.
 
-Poppins and Aref Ruqaa Ink load through Google Fonts. No new fonts or runtime dependencies were added.
+The homepage loads Inter and Plus Jakarta Sans through Google Fonts. Legal pages retain their existing typography. No runtime dependencies were added.
 
 ## Product status
 
@@ -40,6 +41,6 @@ Run `python3 scripts/build.py`, `python3 scripts/check_seo.py`, and `python3 scr
 
 The public crawler policy permits all user agents and public assets, including unknown crawlers. No provider-specific allowlist is needed. Crawl permission does not guarantee indexing; CDN/firewall and live hosting rules must also permit requests.
 
-The custom editorial design uses warm paper, botanical green, ledger lines and an original inline arrow illustration. No new runtime dependencies were introduced. Browser checks covered desktop (1440px) and mobile (390px) widths without horizontal overflow, mobile navigation, the availability dialog and native FAQ disclosure. Build, SEO, JavaScript syntax and local HTTP checks passed. Pull requests now validate the build, crawler rules, metadata, links and HTTP responses in CI.
+The homepage follows the supplied Stitch project: emerald accents, pale slate surfaces, centered typography, a detailed dashboard concept and connected capability cards. Browser checks covered 320, 390, 600, 768, 844, 1024, 1440, 1920 and 2560px widths, including portrait and landscape, without horizontal overflow. Mobile navigation, the availability dialog and native FAQ disclosure passed, with no browser errors or warnings. Build, SEO, JavaScript syntax and local HTTP checks passed. Pull requests now validate the build, crawler rules, metadata, links and HTTP responses in CI.
 
 These changes are local and have not been pushed or deployed. Before public product launch, supply a verified contact channel and confirm product availability. The current website remains an informational introduction to a product in development.
