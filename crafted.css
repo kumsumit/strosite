@@ -86,3 +86,8 @@
 @media (prefers-reduced-motion: reduce) {
   .workbench-note { transform: none; }
 }
+
+#contact-form{display:grid;gap:12px;margin-top:12px}
+#contact-form label{display:grid;gap:4px;font-size:14px;text-align:left}
+#contact-form input,#contact-form textarea{font:inherit;padding:10px 12px;border:1px solid #c9cfd2;border-radius:6px;background:#fff;color:inherit}
+#contact-status{min-height:1.4em;margin:0;font-size:14px}
