@@ -71,7 +71,7 @@ print(f'SEO checks passed for {len(urls)} sitemap pages (metadata, schema, crawl
 from urllib.robotparser import RobotFileParser
 rules = RobotFileParser(); rules.parse(robots.splitlines())
 for agent in ('Googlebot','bingbot','DuckDuckBot','Bravebot','Applebot','OAI-SearchBot','ChatGPT-User','GPTBot','Claude-SearchBot','Claude-User','ClaudeBot','PerplexityBot','Perplexity-User','CCBot','facebookexternalhit','LinkedInBot','Twitterbot','UnknownResearchCrawler'):
-    for target in ('/', '/privacy.html', '/terms.html', '/assets/social.png', '/styles.css', '/script.js'):
+    for target in ('/', '/privacy.html', '/terms.html', '/assets/social.png', '/site.css', '/site.js'):
         assert rules.can_fetch(agent, ORIGIN + target), f'{agent} blocked at {target}'
 assert 'noindex' in (ROOT / '404.html').read_text()
 assert not list(ROOT.rglob('SEO*.md')) and not (ROOT / 'scripts').exists(), 'Internal files leaked into artifact'

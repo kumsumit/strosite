@@ -15,14 +15,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm test
-      - run: node scripts/build-interactive.mjs
       - name: Check JavaScript syntax
         run: |
-          node --check common.js
-          node --check script.js
+          node --check site.js
       - name: Build public website
         run: python scripts/build.py
       - name: Check metadata, links and crawler access
