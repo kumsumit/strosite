@@ -3,7 +3,7 @@
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const desktop = matchMedia('(min-width: 981px)');
+const desktop = matchMedia('(min-width: 981px) and (min-height: 721px)');
 const fmt = n => '₹' + Math.round(n).toLocaleString('en-IN');
 
 document.body.classList.remove('no-js');

@@ -369,6 +369,10 @@ dialog .btn{margin-top:14px}
   .float{display:none}
   .node{padding:12px}.node span{display:none}
 }
+@media(max-height:720px){
+  .story{height:auto}.story .sticky{position:static;height:auto;padding:90px 0 110px}
+  .stage{max-height:none;max-width:520px}
+}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .hero h1 span b{transform:none}
