@@ -9,9 +9,8 @@ Run `npm ci` and `npm run check`, then `python3 -m http.server 8000 --directory 
 ## Source structure
 
 - `index.html`: homepage content, semantic structure and SEO metadata.
-- `styles.css`: existing shared brand tokens, navigation, legal pages and responsive styles.
+- `site.css`: the single stylesheet for the homepage, legal pages and 404 — design tokens, type scale, components and responsive rules. See “Design system — November 2026” below.
 - `positioning.css`: homepage operating-system narrative, product concepts and responsive layouts.
-- `stitch.css`: current Stitch-inspired homepage design with emerald accents, slate surfaces, adaptive dashboard, cards and responsive layouts.
 - `crafted.css` and `positioning.css`: retained earlier homepage treatments; no longer loaded by the homepage.
 - `script.js`: informational access/contact dialogs and active navigation state.
 - `common.js`: mobile navigation, sticky header and copyright year on all pages.
@@ -53,7 +52,7 @@ Checked seven viewports from 320px to 2560px, including landscape, with no horiz
 
 ## Interactive experience
 
-`experience.css` and `experience.js` add the receipt scene, transaction story, visibility-aware motion, motion pause control, illustrative offline switch and Copilot prompt choices. See `EXPERIENCE_DESIGN.md` for the reference study, design rationale and verification limits. All demos use sample records and perform no business operations.
+`experience.js` adds the receipt scene, transaction story, visibility-aware motion, motion pause control, illustrative offline switch and Copilot prompt choices. See `EXPERIENCE_DESIGN.md` for the reference study, design rationale and verification limits. All demos use sample records and perform no business operations.
 
 
 The hero now uses an interactive 3D shop: customer, shopkeeper, counter, bill, items, supplier and van. Click the models or use the four entity buttons; advance the sample sale with the primary action and reset with Start Again. Run `node scripts/check_scene.mjs` for the scene's geometry, transaction-state and lifecycle checks.
@@ -71,3 +70,19 @@ Browser checks for this upgrade covered 320, 390, 768 and 1440px widths without 
 Use **Play a working day** in the hero to open the new interactive shop. Set 1–8 rice bags, choose paid or credit, then play or step through the sale. Rice travels from the shelf into the basket; an itemized bill prints; stock, the customer account and daily reporting update in sequence. Receive a supplier delivery to animate the van and stock receipt, toggle attendance, or prepare an unsent payment reminder. Reset returns the whole simulation to its initial state.
 
 This is original SVG artwork animated with Motion and backed by a tested transaction state model. The static dashboard below the hero was replaced. The implementation adds no animation dependencies. `npm test` verifies inventory, paid/credit, purchase receipt, invoice count, quantity locking and reset behavior. `npm run preview` serves the last production build on port 8000.
+
+## Design system — November 2026
+
+The site was redesigned to read as a mature product company rather than a template. Content, claims, section order, IDs and every interactive island are unchanged; only presentation moved.
+
+- **One stylesheet.** `site.css` replaces `stitch.css`, `experience.css`, `styles.css`, `src/premium.css` and `src/components/business-studio.css`, which had accumulated four layers of overrides. React components no longer import CSS, so the page is fully styled even if the JavaScript bundle fails to load.
+- **Palette.** Warm paper (`--paper`), near-black green-tinted ink (`--ink`), one deep emerald (`--brand`) and a mint accent taken from the logo. Dark ink sections (story, offline, Copilot card, closing CTA) give the page rhythm. Tokens live at the top of `site.css`.
+- **Type.** IBM Plex Sans for interface and display (chosen over Geist, which reads as a generic template/AI-site default), Instrument Serif italic only for accent phrases, and IBM Plex Mono only for step numbers. Labels are sentence case in the main font, not monospace capitals. All loaded from Google Fonts; the Privacy Policy lists them.
+- **Components.** Drawn 24px stroke SVG icons replace unicode glyphs. Capabilities use a bento grid with small product vignettes built from the site’s own sample records. The hero product window gains a real logo, search field and an icon rail that follows the active tab. The working-day illustration was recoloured to the same palette.
+- **Motion.** CSS-only hero entrance, live-status pulses, a sync “drip” and an ecosystem shuttle. Everything collapses under `prefers-reduced-motion`.
+
+Verified locally at 1440px and 375px: all interactions (studio sale, dashboard tabs, sample sale, offline switch, Copilot prompts, FAQ, dialogs, mobile menu), no console errors and no horizontal overflow. Build, typecheck, tests, SEO and HTTP checks pass. Real-device QA and Lighthouse were not run.
+
+The hero product window no longer renders a React Three Fiber depth layer. `three`, `@react-three/fiber`, `@react-three/drei` and `@types/three` were removed from `package.json` (62 packages), and the optional ~233 KB gzip 3D chunk is gone. The vendored `assets/vendor/three/` copy used by the legacy `scene.js` is untouched.
+
+On Windows, run the Python build scripts with `PYTHONUTF8=1` because they read files with the platform default encoding.

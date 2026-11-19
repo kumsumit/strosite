@@ -9,7 +9,7 @@ export default function ScrollStory() {
     media.add('(min-width: 801px) and (prefers-reduced-motion: no-preference)', () => {
       const display = document.querySelector<HTMLElement>('.story-display');
       if (!display) return;
-      const labels = ['01 / STOCK', '02 / THE LEDGER', '03 / THE PEOPLE', '04 / THE NEXT STEP'];
+      const labels = ['01 / Stock', '02 / The ledger', '03 / The people', '04 / The next step'];
       const values = ['42 → 40', 'One account.', 'A shared view.', 'See. Decide. Act.'];
       const copies = ['Two bags sold. Available stock changes with the transaction.', 'The customer and their transaction history stay in the same story.', 'Responsibilities follow the people doing the work.', 'Records become context for a recommendation you can review.'];
       const chapters = gsap.utils.toArray<HTMLElement>('[data-chapter]');

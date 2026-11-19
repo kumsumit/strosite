@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { hydrateRoot } from 'react-dom/client';
 import { Dashboard } from './components/Dashboard';
 import { ScrollProgress, useCapabilities } from './animation/primitives';
-import './premium.css';
 import { SectionReveals } from './animation/SectionReveals';
 const Story = lazy(() => import('./animation/ScrollStory'));
 function Enhancements() {
