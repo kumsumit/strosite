@@ -77,19 +77,26 @@ setTimeout(() => $$('.hero [data-count]').forEach(countUp), 700);
 const device = $('.device');
 if (device && !reduced && matchMedia('(hover: hover)').matches) {
   const hero = $('.hero');
-  hero.addEventListener('pointermove', e => {
+  let hp = null, hraf = 0;
+  hero.addEventListener('pointermove', e => { hp = e; hraf ||= requestAnimationFrame(() => { hraf = 0; tilt(hp); }); }, { passive: true });
+  const tilt = e => {
     const x = (e.clientX / innerWidth - .5), y = (e.clientY / innerHeight - .5);
     device.style.transform = `perspective(1400px) rotateY(${-7 + x * 8}deg) rotateX(${3 - y * 8}deg)`;
     $$('.hero .blob').forEach((b, i) => { b.style.translate = `${x * (i ? -40 : 50)}px ${y * (i ? -30 : 40)}px`; });
-  });
+  };
   hero.addEventListener('pointerleave', () => { device.style.transform = ''; });
 }
 
 /* ---------- cards: pointer spotlight ---------- */
-$$('.card').forEach(c => c.addEventListener('pointermove', e => {
-  const r = c.getBoundingClientRect();
-  c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`);
-}));
+$$('.card').forEach(c => {
+  let ev = null, raf = 0;
+  c.addEventListener('pointermove', e => {
+    ev = e; raf ||= requestAnimationFrame(() => {
+      raf = 0; const r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', `${ev.clientX - r.left}px`); c.style.setProperty('--my', `${ev.clientY - r.top}px`);
+    });
+  }, { passive: true });
+});
 
 /* ---------- the sale story ---------- */
 const story = $('#story');
@@ -222,7 +229,14 @@ $$('[data-info]').forEach(b => b.addEventListener('click', () => {
 /* ---------- Contact Us form (Forminit) ---------- */
 const FORM_ID = 'yadflvn617u';
 const contactDialog = $('#contact-dialog'), contactForm = $('#contact-form'), contactStatus = $('#contact-status');
-$$('[data-contact]').forEach(b => b.addEventListener('click', () => contactDialog?.showModal()));
+// Third-party form SDK loads only when needed, keeping it off the main thread at page load (INP).
+let sdk;
+const loadSdk = () => sdk ||= new Promise((res, rej) => {
+  if (window.Forminit) return res();
+  const s = document.createElement('script'); s.src = 'https://forminit.com/sdk/v1/forminit.js';
+  s.onload = res; s.onerror = rej; document.head.append(s);
+});
+$$('[data-contact]').forEach(b => b.addEventListener('click', () => { loadSdk().catch(() => { sdk = null; }); contactDialog?.showModal(); }));
 let sending = false;
 contactForm?.addEventListener('submit', async event => {
   event.preventDefault();
@@ -235,10 +249,11 @@ contactForm?.addEventListener('submit', async event => {
   const submit = $('[type=submit]', form);
   sending = true; submit.disabled = true; contactStatus.textContent = 'Sending…';
   try {
+    await loadSdk();
     const { data, error } = await new Forminit().submit(FORM_ID, fd);
     if (!error && typeof data?.hashId === 'string') { form.reset(); contactStatus.textContent = 'Thank you! Your message has been sent.'; }
     else { console.error(error); contactStatus.textContent = 'Sorry, something went wrong. Please check your details and try again.'; }
-  } catch (err) { console.error(err); contactStatus.textContent = 'Network error. Please try again.'; }
+  } catch (err) { sdk = null; console.error(err); contactStatus.textContent = 'Network error. Please try again.'; }
   finally { sending = false; submit.disabled = false; }
 });
 

@@ -1,6 +1,6 @@
 # Stromule
 
-> Stromule is the Business OS for Everyday Businesses, a product of Kumpali Private Limited. It is in development, not publicly available for registration or download.
+> Stromule is billing, inventory and business management software for small businesses, a product of Kumpali Private Limited. It is in development, not publicly available for registration or download.
 
 Stromule connects the direction of everyday operations, business understanding and approved action for small businesses. Public HTML is the authoritative source. Launch timing and pricing are unannounced. No verified public contact address is published.
 
@@ -11,6 +11,7 @@ Intended users include retailers, wholesalers, distributors, small manufacturers
 ## Product and company
 
 - [Stromule](https://stromule.com/): Official introduction and product status.
+- [Overview and comparison](https://stromule.com/#overview): What Stromule does compared with spreadsheets and separate apps.
 - [Capabilities](https://stromule.com/#operations): Development workflows and vision labels.
 - [Business Copilot](https://stromule.com/#copilot): Illustrative future assistant direction.
 - [Business profiles](https://stromule.com/#businesses): Intended audience and limitations.
