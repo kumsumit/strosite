@@ -214,7 +214,7 @@ if (toc.length) {
 
 /* ---------- dialogs ---------- */
 const info = $('#info-dialog');
-const notices = { access: ['An operating foundation taking shape.', 'Stromule is in development. Registration is not open. Pricing, launch timing, supported countries and languages have not been announced. This site does not collect sign-ups or payments. Check stromule.com for future availability updates.'] };
+const notices = { access: ['An operating foundation taking shape.', 'Stromule is in development. Registration is not open. Stromule launches on 14 December 2026. Pricing, supported countries and languages have not been announced. This site does not collect sign-ups or payments. Check stromule.com for future availability updates.'] };
 const backdropClose = d => d.addEventListener('click', e => {
   if (e.target !== d) return;
   const b = d.getBoundingClientRect();

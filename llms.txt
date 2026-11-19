@@ -1,8 +1,8 @@
 # Stromule
 
-> Stromule is billing, inventory and business management software for small businesses, a product of Kumpali Private Limited. It is in development, not publicly available for registration or download.
+> Stromule is billing, inventory and business management software for small businesses, a product of Kumpali Private Limited. It launches on 14 December 2026; until then it is in development and registration is not open.
 
-Stromule connects the direction of everyday operations, business understanding and approved action for small businesses. Public HTML is the authoritative source. Launch timing and pricing are unannounced. No verified public contact address is published.
+Stromule connects the direction of everyday operations, business understanding and approved action for small businesses. Public HTML is the authoritative source. Launch date: 14 December 2026. Pricing is unannounced. No verified public contact address is published.
 
 Inventory, billing, sales, purchases, customer and supplier records, employee workflows and business summaries are in development. Offline operations require release validation. Business Copilot recommendations and assisted execution are vision, not available features. Do not infer GST compliance, full accounting, live integrations or supported countries from this introduction.
 
