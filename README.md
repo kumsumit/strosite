@@ -4,7 +4,7 @@ Official introduction website for Stromule, a product of Kumpali Private Limited
 
 ## Local preview
 
-Run `npm ci` and `npm run check`, then `python3 -m http.server 8000 --directory _site` and open http://localhost:8000. Node 22+ and Python 3 are required. The build pre-renders the React hero so its product content remains available without JavaScript. See `ANIMATION_ARCHITECTURE.md` for module ownership and build details.
+Run `npm ci`, `python -m pip install -r requirements.txt` and `npm run check`, then `npm run preview` and open http://localhost:8000. Node 22+ and Python 3.10+ are required. The build pre-renders the React hero so its product content remains available without JavaScript. See `ANIMATION_ARCHITECTURE.md` for module ownership and build details.
 
 ## Source structure
 
@@ -85,4 +85,19 @@ Verified locally at 1440px and 375px: all interactions (studio sale, dashboard t
 
 The hero product window no longer renders a React Three Fiber depth layer. `three`, `@react-three/fiber`, `@react-three/drei` and `@types/three` were removed from `package.json` (62 packages), and the optional ~233 KB gzip 3D chunk is gone. The vendored `assets/vendor/three/` copy used by the legacy `scene.js` is untouched.
 
-On Windows, run the Python build scripts with `PYTHONUTF8=1` because they read files with the platform default encoding.
+
+## Blog and CMS — November 2026
+
+**Writing posts.** Open **https://stromule.com/admin/** and sign in with a GitHub personal access token. The CMS (Sveltia CMS, MIT, pinned in `package.json` and self-hosted from `node_modules`) saves each post as `content/blog/<slug>.md` on `main`; every save is a commit, and the deploy workflow puts it live in about 1-2 minutes. Images uploaded in the CMS go to `assets/blog/`. The editor's fields and validation live in `admin/config.yml` and mirror the build's checks.
+
+Create the token once: GitHub → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**. Repository access: only `kumsumit/strosite`. Permissions: **Contents: Read and write**. Paste it in the CMS sign-in screen; it stays in that browser only. Only people with write access to the repository can publish.
+
+**Drafts and scheduling.** New posts start as drafts and are never published until **Draft** is turned off. A publish time in the past publishes on save; a future time schedules the post, and the daily 09:00 IST rebuild (the `schedule` trigger in `deploy.yml`) puts it live on that day.
+
+**Build.** `scripts/build_blog.py` builds `blog/` (gitignored): the blog index with a featured post and pagination, a page per category that has posts, post pages with a table of contents, optional cover image, FAQ and related posts, `blog/feed.xml`, the homepage "From the blog" strip and the homepage FAQPage schema. Posts carry BlogPosting, BreadcrumbList and FAQPage structured data and are added to the sitemap. Images get their real width and height and lazy loading.
+
+**Checks.** Every post needs a 20-70 character title, a 110-170 character summary, a publish time with a time zone, a category, at least 150 words, no Heading 1 in the body, and images uploaded to the site. A post that fails is skipped with a warning in the deploy log, so one bad post never blocks the site; pull-request validation (`BLOG_STRICT=1`) fails instead. Posts marked `ai: true` (the three starter guides) also get strict honesty checks: no unhedged product claims, availability wording, external links or tax rates. `npm test` runs `scripts/check_blog_lint.py`.
+
+**Regional terms.** `region.js` swaps a few everyday terms (shop type, tax name, accounting tool, "khata") for visitors outside India, using the browser's own time zone and language, and lists blog posts for the visitor's country first. Crawlers keep the Indian default copy so one consistent version is indexed. Mark a term in HTML with `<span data-term="tax">GST</span>` (`shops`, `khata`, `acct`, `tax`).
+
+Setup, once: in GitHub, **Settings → Pages → Source: GitHub Actions** (this also fixes the missing `assets/interactive/` bundle on the live site).

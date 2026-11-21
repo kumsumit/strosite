@@ -18,7 +18,7 @@ class Page(HTMLParser):
 
 urls = [node.text for node in ET.parse(ROOT / 'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
 assert urls and len(urls) == len(set(urls)), 'Empty or duplicate sitemap URLs'
-robots = (ROOT / 'robots.txt').read_text()
+robots = (ROOT / 'robots.txt').read_text(encoding='utf-8')
 assert 'User-agent: *' in robots and 'Allow: /' in robots
 assert f'Sitemap: {ORIGIN}/sitemap.xml' in robots
 assert 'Disallow: /' not in robots
@@ -29,7 +29,9 @@ for url in urls:
     parsed = urlsplit(url)
     assert f'{parsed.scheme}://{parsed.netloc}' == ORIGIN and not parsed.fragment
     path = ROOT / (parsed.path.lstrip('/') or 'index.html')
-    text = path.read_text()
+    if path.is_dir():
+        path /= 'index.html'  # folder-style URLs such as /blog/<slug>/
+    text = path.read_text(encoding='utf-8')
     page = Page(text)
     canonical = [a['href'] for t, a in page.tags if t == 'link' and a.get('rel') == 'canonical']
     assert canonical == [url], f'{path.name}: incorrect canonical'
@@ -63,7 +65,7 @@ for url in urls:
             local /= 'index.html'
         assert local.exists(), f'{path.name}: missing {target}'
         if dest.fragment and local.suffix == '.html':
-            ids = {a.get('id') for _, a in Page(local.read_text()).tags}
+            ids = {a.get('id') for _, a in Page(local.read_text(encoding='utf-8')).tags}
             assert unquote(dest.fragment) in ids, f'{path.name}: missing anchor {target}'
         assert dest.path != 'index.html', f'{path.name}: link to canonical / instead'
 print(f'SEO checks passed for {len(urls)} sitemap pages (metadata, schema, crawl rules, local links and anchors).')
@@ -73,7 +75,7 @@ rules = RobotFileParser(); rules.parse(robots.splitlines())
 for agent in ('Googlebot','bingbot','DuckDuckBot','Bravebot','Applebot','OAI-SearchBot','ChatGPT-User','GPTBot','Claude-SearchBot','Claude-User','ClaudeBot','PerplexityBot','Perplexity-User','CCBot','facebookexternalhit','LinkedInBot','Twitterbot','UnknownResearchCrawler'):
     for target in ('/', '/privacy.html', '/terms.html', '/assets/social.png', '/site.css', '/script.js'):
         assert rules.can_fetch(agent, ORIGIN + target), f'{agent} blocked at {target}'
-assert 'noindex' in (ROOT / '404.html').read_text()
+assert 'noindex' in (ROOT / '404.html').read_text(encoding='utf-8')
 assert not list(ROOT.rglob('SEO*.md')) and not (ROOT / 'scripts').exists(), 'Internal files leaked into artifact'
-assert (ROOT / 'llms.txt').read_text().startswith('# Stromule')
+assert (ROOT / 'llms.txt').read_text(encoding='utf-8').startswith('# Stromule')
 print('Social metadata, image attributes, representative crawler policies and isolated public artifact passed.')

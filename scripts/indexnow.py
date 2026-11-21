@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://stromule.com'
 def main():
     parser = argparse.ArgumentParser(); parser.add_argument('--submit', action='store_true'); args = parser.parse_args()
-    key = (ROOT / 'indexnow-key.txt').read_text().strip()
+    key = (ROOT / 'indexnow-key.txt').read_text(encoding='utf-8').strip()
     if not re.fullmatch(r'[a-zA-Z0-9-]{8,128}', key): raise ValueError('Invalid IndexNow key')
     urls = [el.text for el in ET.parse(ROOT / '_site/sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
     payload = {'host':'stromule.com', 'key':key, 'keyLocation':ORIGIN+'/indexnow-key.txt', 'urlList':urls}

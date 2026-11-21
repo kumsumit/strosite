@@ -16,6 +16,8 @@ Intended users include retailers, wholesalers, distributors, small manufacturers
 - [Business profiles](https://stromule.com/#businesses): Intended audience and limitations.
 - [Company](https://stromule.com/#about-kumpali): Kumpali Private Limited.
 - [Answers](https://stromule.com/#faq): Product, availability, offline support and ecosystem questions.
+- [Blog](https://stromule.com/blog/): Practical guides for small businesses on billing, inventory, customer credit and operations.
+- [Blog feed](https://stromule.com/blog/feed.xml): RSS feed of the latest guides.
 
 ## Policies
 

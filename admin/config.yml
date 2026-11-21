@@ -1,0 +1,131 @@
+# Sveltia CMS configuration for stromule.com/admin/
+# Posts are saved as Markdown files in content/blog/ on the main branch. Each save is a
+# commit; the "Deploy to GitHub Pages" workflow then rebuilds the site (about 1-2 minutes).
+# The fields below mirror the checks in scripts/build_blog.py, so a post that saves here
+# also passes the build.
+backend:
+  name: github
+  repo: kumsumit/strosite
+  branch: main
+  # Sign in with a GitHub personal access token: no separate login server is needed.
+  auth_methods: [token]
+  commit_messages:
+    create: 'Blog: create "{{slug}}"'
+    update: 'Blog: update "{{slug}}"'
+    delete: 'Blog: delete "{{slug}}"'
+    uploadMedia: 'Blog: upload "{{path}}"'
+    deleteMedia: 'Blog: delete "{{path}}"'
+
+site_url: https://stromule.com
+display_url: https://stromule.com
+logo:
+  src: /assets/logo-96.png
+
+media_folder: assets/blog
+public_folder: /assets/blog
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+
+collections:
+  - name: blog
+    label: Blog posts
+    label_singular: Blog post
+    description: Guides and updates published at stromule.com/blog. Turn off Draft and set the publish time to publish.
+    folder: content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: '{{slug}}'
+    summary: "{{title}} ({{date | date('D MMM YYYY')}})"
+    sortable_fields: [date, title, category]
+    preview_path: 'blog/{{slug}}/'
+    fields:
+      - name: title
+        label: Title
+        widget: string
+        hint: '20-70 characters. This is the headline and the title shown in Google results.'
+        pattern: ['^.{20,70}$', 'Use 20 to 70 characters.']
+      - name: description
+        label: Summary
+        widget: text
+        hint: '110-170 characters. Shown under the title, on blog cards and in Google results.'
+        pattern: ['^[\s\S]{110,170}$', 'Use 110 to 170 characters.']
+      - name: draft
+        label: Draft
+        widget: boolean
+        default: true
+        hint: 'Drafts are saved but never shown on the site. Turn this off to publish.'
+      - name: date
+        label: Publish date and time
+        widget: datetime
+        format: 'YYYY-MM-DDTHH:mm:ssZ'
+        hint: 'Now or earlier publishes right away (live in about 2 minutes). A future time schedules the post; it goes live at the first daily update (9:00 AM IST) after that time.'
+      - name: category
+        label: Category
+        widget: select
+        options:
+          - Billing & invoicing
+          - Inventory & stock
+          - Customer credit
+          - Running a shop
+          - Growth
+          - Technology
+      - name: region
+        label: Written for
+        widget: select
+        default: global
+        hint: 'Visitors from this country see the post first in blog lists.'
+        options:
+          - { label: Everyone (global), value: global }
+          - { label: India, value: IN }
+          - { label: United Kingdom, value: GB }
+          - { label: United States, value: US }
+          - { label: Canada, value: CA }
+          - { label: Australia, value: AU }
+          - { label: United Arab Emirates, value: AE }
+          - { label: Singapore, value: SG }
+      - name: author
+        label: Author
+        widget: string
+        default: Stromule Editorial
+      - name: image
+        label: Cover image
+        widget: image
+        required: false
+        hint: 'Optional. Shown at the top of the post and used when the post is shared. Landscape images around 1200 × 630 work best.'
+      - name: image_alt
+        label: Cover image description
+        widget: string
+        required: false
+        hint: 'Required if you add a cover image: describe what the image shows, for screen readers and search engines.'
+      - name: body
+        label: Article
+        widget: markdown
+        hint: 'Use Heading 2 for main sections (they become the table of contents). Do not use Heading 1; the title is the main heading. Upload images here rather than linking to other websites.'
+      - name: faq
+        label: Frequently asked questions
+        label_singular: Question
+        widget: list
+        required: false
+        hint: 'Optional but recommended: 3-6 short questions people search for. They appear at the end of the post and in Google results.'
+        summary: '{{q}}'
+        fields:
+          - { name: q, label: Question, widget: string }
+          - { name: a, label: Answer, widget: text }
+      - name: tags
+        label: Search keywords
+        widget: list
+        required: false
+        hint: 'Optional. A few phrases people would search for, separated by commas.'
+      - name: updated
+        label: Last updated
+        widget: datetime
+        format: 'YYYY-MM-DDTHH:mm:ssZ'
+        required: false
+        hint: 'Optional. Set this when you make a meaningful change to an older post.'
+      - name: ai
+        widget: hidden
+        default: false
