@@ -2,24 +2,12 @@
   "name": "stromule-website",
   "private": true,
   "scripts": {
-    "build": "node scripts/build-interactive.mjs && python scripts/build_blog.py && python scripts/build.py",
-    "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm test && npm run build && python scripts/check_seo.py",
-    "test": "node scripts/check_business.mjs && python scripts/check_blog_lint.py",
+    "build": "python scripts/build_blog.py && python scripts/build.py",
+    "test": "python scripts/check_blog_lint.py",
+    "check": "node --check site.js && node --check region.js && npm test && npm run build && python scripts/check_seo.py",
     "preview": "python -m http.server 8000 --directory _site"
   },
-  "dependencies": {
-    "@gsap/react": "^2.1.2",
-    "gsap": "^3.13.0",
-    "motion": "^12.23.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
   "devDependencies": {
-    "@sveltia/cms": "0.261.0",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "esbuild": "^0.25.0",
-    "typescript": "^5.9.0"
+    "@sveltia/cms": "0.261.0"
   }
 }

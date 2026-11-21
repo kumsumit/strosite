@@ -41,7 +41,7 @@ Inspected `apps/stromule/lib/core/platform/platform_controls.dart`: `PlatformBut
 
 A targeted search across Stromule and package Dart sources/dependency manifests found no dedicated stylus, handwriting-recognition or voice-assistant implementation. Generic platform/OS input support is not evidence of those integrated product capabilities. They are labeled **Vision** in the homepage. No mock writing surface or microphone button implies that these features work.
 
-Existing offline, CSV, permissions and commerce evidence and release questions remain in [REDESIGN.md](REDESIGN.md). Product-team confirmation is additionally needed for supported input devices, handwriting/voice scope, recognition services and privacy behavior, accessibility, device testing and any proposed approved-action execution model.
+Existing offline, CSV, permissions and commerce evidence and release questions remain open product-team questions. Product-team confirmation is additionally needed for supported input devices, handwriting/voice scope, recognition services and privacy behavior, accessibility, device testing and any proposed approved-action execution model.
 
 ## Validation and remaining limits
 

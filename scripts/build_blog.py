@@ -33,7 +33,7 @@ CONTENT = ROOT / 'content' / 'blog'
 OUT = ROOT / 'blog'
 ORIGIN = 'https://stromule.com'
 PAGE_SIZE = 12
-FONTS = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap'
+FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap'
 
 CATEGORIES = {
     'Billing & invoicing': ('billing', 'Billing and invoicing guides for small businesses: bills, quotations, returns and getting paid on time.'),
@@ -292,20 +292,20 @@ def head(title: str, desc: str, path: str, og_type: str = 'website', schema: lis
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#f7f6f2"><link rel="canonical" href="{url}">
+<meta name="theme-color" content="#f6f4ee"><link rel="canonical" href="{url}">
 <meta property="og:type" content="{og_type}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}"><meta property="og:image" content="{img_url}"><meta property="og:image:alt" content="{e(img_alt)}"><meta property="og:image:width" content="{img_w}"><meta property="og:image:height" content="{img_h}"><meta property="og:site_name" content="Stromule"><meta property="og:locale" content="en_US">{extra}
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{img_url}">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="Stromule Blog" href="{ORIGIN}/blog/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="{FONTS}" rel="stylesheet">
-<link rel="stylesheet" href="/site.css"><script src="/common.js" defer></script><script src="/region.js" defer></script>
+<link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/blog.css"><script src="/site.js" defer></script><script src="/region.js" defer></script>
 <script type="application/ld+json">{graph}</script>
-</head><body class="blog-page"><a class="skip" href="#main">Skip to content</a>
-<header class="header"><div class="nav wrap"><a class="brand" href="/" aria-label="Stromule home"><img src="/assets/logo-96.png" width="34" height="34" alt="">stromule</a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation"><span class="menu-label">Menu</span><span class="menu-icon" aria-hidden="true"><i></i><i></i></span></button><nav id="navigation" aria-label="Main navigation"><a href="/#operations">Capabilities</a><a href="/#why">Why Stromule</a><a href="/#ecosystem">Pangeabuy</a><a href="/blog/" aria-current="page">Blog</a><a href="/#faq">FAQ</a></nav><a class="button small" href="/#start">Getting started <span aria-hidden="true">↗</span></a></div></header>
+</head><body class="legal-page blog-page"><a class="skip" href="#main">Skip to content</a>
+<header class="header"><div class="nav wrap"><a class="brand" href="/" aria-label="Stromule home"><img src="/assets/logo-96.png" width="34" height="34" alt="Stromule logo">stromule</a><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main navigation"><a href="/#overview">Overview</a><a href="/#operations">Capabilities</a><a href="/#copilot">Copilot</a><a href="/#offline">Offline</a><a href="/#ecosystem">Pangeabuy</a><a href="/blog/" aria-current="page">Blog</a><a href="/#faq">FAQ</a></nav><a class="btn small green" href="/#start">Getting started <span aria-hidden="true">↗</span></a></div></header>
 '''
 
 
-FOOTER = '''<footer class="site-footer"><div class="wrap"><div class="footer-main"><div class="footer-brand"><a class="brand" href="/"><img src="/assets/logo-96.png" width="34" height="34" alt="">stromule</a><p>An intelligent operating foundation for everyday businesses.</p><p>A product of <strong>Kumpali Private Limited.</strong><br>Technology that feels useful in real life.</p></div><div class="footer-column"><h3>Product</h3><a href="/#operations">Connected capabilities</a><a href="/#copilot">Business Copilot</a><a href="/#offline">Offline direction</a><a href="/#ecosystem">Pangeabuy commerce</a></div><div class="footer-column"><h3>Blog</h3>{cats}<a href="/blog/feed.xml">RSS feed</a></div><div class="footer-column"><h3>Company &amp; trust</h3><a href="/#about-kumpali">About Kumpali</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Kumpali Private Limited. All rights reserved.</span><a href="#main">Back to top ↑</a></div></div></footer>
+FOOTER = '''<footer class="wrap"><div class="footer-main"><div class="footer-brand"><a class="brand" href="/"><img src="/assets/logo-96.png" width="34" height="34" alt="Stromule logo">stromule</a><p>An intelligent operating foundation for everyday businesses.</p><p>A product of <strong>Kumpali Private Limited.</strong><br>Technology that feels useful in real life.</p></div><div class="footer-col"><h3>PRODUCT</h3><a href="/#operations">Connected capabilities</a><a href="/#copilot">Business Copilot</a><a href="/#offline">Offline direction</a><a href="/#ecosystem">Pangeabuy commerce</a></div><div class="footer-col"><h3>BLOG</h3>{cats}<a href="/blog/feed.xml">RSS feed</a></div><div class="footer-col"><h3>COMPANY &amp; TRUST</h3><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Kumpali Private Limited. All rights reserved.</span><a href="#main">Back to top ↑</a></div></footer>
 </body></html>
 '''
 
@@ -393,8 +393,8 @@ def listing_page(posts: list[Post], all_posts: list[Post], *, base: str, page: i
 def product_note() -> str:
     return ('<section class="blog-product"><div class="wrap"><div class="blog-product-card"><div><span class="eyebrow">About Stromule</span>'
             '<h2>One connected system for billing, stock and customer credit.</h2>'
-            '<p>Stromule is business management software being built by Kumpali Private Limited for small businesses. It is in development and not yet available.</p></div>'
-            '<a class="button primary" href="/">See what we’re building <span aria-hidden="true">→</span></a></div></div></section>')
+            '<p>Stromule is billing, inventory and business management software from Kumpali Private Limited for small businesses. It launches on 14 December 2026.</p></div>'
+            '<a class="btn green" href="/">See what we’re building <span aria-hidden="true">→</span></a></div></div></section>')
 
 
 def post_page(p: Post, all_posts: list[Post]) -> str:
@@ -421,8 +421,8 @@ def post_page(p: Post, all_posts: list[Post]) -> str:
                + ('<li><a href="#faq">Frequently asked questions</a></li>' if p.faq else '') + '</ol></nav>')
     faq = ''
     if p.faq:
-        faq = ('<section class="post-faq" id="faq" aria-labelledby="faq-title"><h2 id="faq-title">Frequently asked questions</h2><div class="faq-list">'
-               + ''.join(f'<details><summary>{e(str(i["q"]).strip())}<span aria-hidden="true"></span></summary><p>{e(str(i["a"]).strip())}</p></details>' for i in p.faq)
+        faq = ('<section class="post-faq" id="faq" aria-labelledby="faq-title"><h2 id="faq-title">Frequently asked questions</h2><div class="faq">'
+               + ''.join(f'<details><summary>{e(str(i["q"]).strip())}<span aria-hidden="true">+</span></summary><div><p>{e(str(i["a"]).strip())}</p></div></details>' for i in p.faq)
                + '</div></section>')
     cover = ''
     if p.cover:
@@ -456,10 +456,6 @@ def feed(posts: list[Post]) -> str:
 
 
 # --- Homepage integration -----------------------------------------------------
-def strip_tags(fragment: str) -> str:
-    return html.unescape(re.sub(r'<[^>]+>', '', fragment)).strip()
-
-
 def update_homepage(posts: list[Post]) -> None:
     index = ROOT / 'index.html'
     text = index.read_text(encoding='utf-8')
@@ -467,17 +463,6 @@ def update_homepage(posts: list[Post]) -> None:
     text, n = re.subn(r'<!-- latest-posts:start -->.*?<!-- latest-posts:end -->',
                       lambda _: f'<!-- latest-posts:start -->{latest}<!-- latest-posts:end -->', text, flags=re.S)
     assert n == 1, 'latest-posts markers missing from index.html'
-    # FAQPage structured data, generated from the visible FAQ so the two never drift.
-    faq_block = re.search(r'<div class="faq-list">(.*?)</div></div></section>', text, re.S)
-    assert faq_block, 'homepage FAQ list not found'
-    pairs = re.findall(r'<details><summary>(.*?)<span aria-hidden="true"></span></summary><p>(.*?)</p></details>', faq_block.group(1), re.S)
-    schema = json.dumps({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
-        {'@type': 'Question', 'name': strip_tags(q), 'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in pairs]}, ensure_ascii=False)
-    tag = f'<script type="application/ld+json" id="faq-schema">{schema}</script>'
-    if 'id="faq-schema"' in text:
-        text = re.sub(r'<script type="application/ld\+json" id="faq-schema">.*?</script>', lambda _: tag, text, flags=re.S)
-    else:
-        text = text.replace('</head>', tag + '\n</head>', 1)
     index.write_text(text, encoding='utf-8', newline='\n')
 
 
